@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b32">
+  <meta name="description" content="Venta de ordenadores, periféricos, software y equipos de telecomunicaciones. Servicio técnico y reparación de ordenadores.">
+  <title>Tienda tecnológica | Equipos, periféricos y reparación</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/store.js" defer></script>
+</head>
+<body class="store-page" id="inicio">
+  <div class="store-announcement">
+    <div class="store-container announcement-inner">
+      <span>TECNOLOGÍA PARA TRABAJAR, CREAR Y CONECTAR</span>
+      <a href="/servicio-tecnico">¿Necesitas reparación? <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+
+  <header class="store-header">
+    <div class="store-container store-nav">
+      <a class="store-brand" href="/" aria-label="Tienda tecnológica, inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none">
+            <rect x="4" y="5" width="32" height="23" rx="5" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M14 35h12M20 28v7M12 15l5 5 11-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="brand-copy"><strong>TIENDA</strong><small>TECNOLOGÍA & SERVICIO</small></span>
+      </a>
+
+      <button class="store-menu-toggle" type="button" aria-expanded="false" aria-controls="store-menu">
+        <span class="sr-only">Abrir menú</span>
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="store-menu" id="store-menu" aria-label="Navegación principal">
+        <a href="#catalogo">Productos</a>
+        <a href="/servicio-tecnico">Servicio técnico</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+        <a class="mobile-admin-link" href="/admin/productos">Administración</a>
+      </nav>
+
+      <a class="store-header-link" href="/admin/productos">
+        Administración <span aria-hidden="true">↗</span>
+      </a>
+      <a class="store-header-link cart-header-link" href="/carrito">
+        Carrito <span class="cart-count" data-cart-count>0</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="store-hero">
+      <div class="store-container hero-layout">
+        <div class="hero-copy">
+          <p class="store-eyebrow"><span></span> TU PRÓXIMA IDEA EMPIEZA AQUÍ</p>
+          <h1>Tecnología que<br>trabaja <em>contigo.</em></h1>
+          <p class="hero-description">
+            Ordenadores, periféricos y soluciones de conectividad. También reparamos
+            y ponemos a punto tus equipos para que sigas adelante.
+          </p>
+          <div class="hero-actions">
+            <a class="store-button store-button-primary" href="#catalogo">
+              Explorar productos <span aria-hidden="true">→</span>
+            </a>
+            <a class="store-button store-button-quiet" href="/servicio-tecnico">
+              <span class="play-icon" aria-hidden="true">↗</span> Servicio técnico
+            </a>
+          </div>
+          <div class="hero-proof">
+            <span class="proof-icon" aria-hidden="true">✓</span>
+            <span>Asesoría cercana. Soluciones para cada necesidad.</span>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Ilustración de un ordenador portátil y accesorios" role="img">
+          <div class="art-glow"></div>
+          <div class="art-orbit orbit-one"></div>
+          <div class="art-orbit orbit-two"></div>
+          <div class="art-chip chip-top"><span class="chip-dot"></span> LISTO PARA LO QUE SIGUE</div>
+          <div class="laptop">
+            <div class="laptop-screen">
+              <div class="screen-top"><span></span><span></span><span></span><i>● ● ●</i></div>
+              <div class="screen-content">
+                <div class="screen-label">CREA SIN LÍMITES</div>
+                <div class="screen-heading">Tu espacio.<br>Tu ritmo.</div>
+                <div class="screen-bars"><i></i><i></i><i></i></div>
+                <div class="screen-card"><b>01</b><span>Ideas en marcha</span><strong>↗</strong></div>
+              </div>
+            </div>
+            <div class="laptop-base"><span></span></div>
+          </div>
+          <div class="floating-device device-headphones">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M8 25v-4a16 16 0 0 1 32 0v4M8 24h7v14h-3a4 4 0 0 1-4-4v-6a4 4 0 0 1 4-4Zm32 0h-7v14h3a4 4 0 0 0 4-4v-6a4 4 0 0 0-4-4Z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="floating-device device-mouse">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="13" y="5" width="22" height="38" rx="11" stroke="currentColor" stroke-width="2.4"/>
+              <path d="M24 5v12m-11 0h22" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="art-caption"><span>01</span><i></i> EQUIPO + ASESORÍA</div>
+          <div class="art-sparkle sparkle-one">✳</div>
+          <div class="art-sparkle sparkle-two">✳</div>
+        </div>
+      </div>
+      <div class="hero-bottom-line"></div>
+    </section>
+
+    <section class="store-category-strip" aria-label="Categorías de la tienda">
+      <div class="store-container category-strip-inner">
+        <span>ENCUENTRA LO QUE NECESITAS</span>
+        <a href="#catalogo" data-filter-link="computo">Ordenadores <span>↗</span></a>
+        <a href="#catalogo" data-filter-link="perifericos">Periféricos <span>↗</span></a>
+        <a href="#catalogo" data-filter-link="software">Software <span>↗</span></a>
+        <a href="#catalogo" data-filter-link="conectividad">Conectividad <span>↗</span></a>
+      </div>
+    </section>
+
+    <section class="store-section catalog-section" id="catalogo">
+      <div class="store-container">
+        <div class="section-topline">
+          <div>
+            <p class="store-eyebrow"><span></span> TECNOLOGÍA PARA TU DÍA A DÍA</p>
+            <h2>Todo conectado.<br><em>Todo en un solo lugar.</em></h2>
+          </div>
+          <p class="section-intro">
+            Desde el equipo que necesitas hasta ese accesorio que mejora tu espacio.
+            Explora nuestras categorías y encuentra la solución ideal.
+          </p>
+        </div>
+
+        <div class="catalog-tools">
+          <div class="catalog-tabs" role="group" aria-label="Filtrar categorías">
+            <button class="catalog-tab is-active" type="button" data-filter="all" aria-pressed="true">Todo</button>
+            <button class="catalog-tab" type="button" data-filter="computo" aria-pressed="false">Cómputo</button>
+            <button class="catalog-tab" type="button" data-filter="perifericos" aria-pressed="false">Periféricos</button>
+            <button class="catalog-tab" type="button" data-filter="software" aria-pressed="false">Software</button>
+            <button class="catalog-tab" type="button" data-filter="conectividad" aria-pressed="false">Conectividad</button>
+          </div>
+          <label class="catalog-search">
+            <span class="sr-only">Buscar categorías</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <input type="search" placeholder="Buscar en la tienda" data-search>
+          </label>
+        </div>
+
+        <div class="store-product-grid" data-product-grid>
+          <% productos.forEach((producto) => { %>
+            <article class="store-product-card" data-category="<%= producto.categoria %>"
+              data-search-text="<%= `${producto.nombre} ${producto.descripcion} ${categories[producto.categoria]}`.toLocaleLowerCase('es') %>">
+              <div class="product-visual visual-<%= producto.categoria %>">
+                <span class="product-badge"><%= categories[producto.categoria].toLocaleUpperCase('es') %></span>
+                <% if (producto.imagen_url) { %>
+                  <img class="product-image" src="<%= producto.imagen_url %>" alt="<%= producto.nombre %>" loading="lazy" referrerpolicy="no-referrer">
+                <% } else { %>
+                  <div class="product-placeholder" aria-hidden="true">
+                    <span><%= categories[producto.categoria] %></span>
+                    <strong><%= producto.nombre.slice(0, 1).toLocaleUpperCase('es') %></strong>
+                  </div>
+                <% } %>
+              </div>
+              <div class="product-info">
+                <div>
+                  <h3><%= producto.nombre %></h3>
+                  <p><%= producto.descripcion || categories[producto.categoria] %></p>
+                  <strong class="product-price">S/ <%= Number(producto.precio).toFixed(2) %></strong>
+                  <small class="product-stock"><%= producto.stock > 0 ? `${producto.stock} disponibles` : 'Agotado' %></small>
+                </div>
+              </div>
+              <button class="add-to-cart-button" type="button"
+                data-add-to-cart
+                data-product-id="<%= producto.id_producto %>"
+                data-product-name="<%= producto.nombre %>"
+                data-product-price="<%= producto.precio %>"
+                data-product-stock="<%= producto.stock %>"
+                <%= producto.stock < 1 ? 'disabled' : '' %>>
+                <%= producto.stock > 0 ? 'Agregar al carrito' : 'Sin stock' %>
+              </button>
+            </article>
+          <% }) %>
+          <p class="catalog-empty" data-empty <%= productos.length > 0 ? 'hidden' : '' %>>
+            <% if (!catalogReady) { %>
+              El catálogo se está configurando. Inténtalo nuevamente más tarde.
+            <% } else if (productos.length === 0) { %>
+              Aún no hay productos publicados. Vuelve pronto para conocer el catálogo.
+            <% } else { %>
+              No encontramos productos con esa búsqueda. Prueba con otro término.
+            <% } %>
+          </p>
+        </div>
+        <p class="catalog-note">Los pedidos se registran para confirmar pago y entrega. El stock y el precio se validan nuevamente al finalizar la compra.</p>
+      </div>
+    </section>
+
+    <section class="service-section" id="servicios">
+      <div class="store-container service-layout">
+        <div class="service-copy">
+          <p class="store-eyebrow"><span></span> SERVICIO TÉCNICO</p>
+          <h2>Tu equipo merece<br><em>una segunda vida.</em></h2>
+          <p>
+            ¿Se puso lento, no enciende o necesita mantenimiento? Diagnosticamos
+            y reparamos ordenadores y equipos periféricos con atención clara y cercana.
+          </p>
+          <a class="store-button store-button-light" href="/servicio-tecnico">Solicitar diagnóstico <span aria-hidden="true">→</span></a>
+          <div class="service-points">
+            <div><span>01</span><b>Diagnóstico</b><small>Revisamos el origen del problema.</small></div>
+            <div><span>02</span><b>Reparación</b><small>Te explicamos opciones antes de avanzar.</small></div>
+            <div><span>03</span><b>Mantenimiento</b><small>Ayudamos a cuidar tu equipo.</small></div>
+          </div>
+        </div>
+        <div class="service-visual" id="servicio-tecnico">
+          <div class="service-visual-glow"></div>
+          <div class="repair-card">
+            <div class="repair-card-top"><span>TECH CARE</span><span>● EN BUENAS MANOS</span></div>
+            <div class="repair-screen">
+              <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                <circle cx="60" cy="60" r="43" stroke="rgba(255,255,255,.16)" stroke-width="1"/>
+                <circle cx="60" cy="60" r="31" stroke="#80efcf" stroke-width="2"/>
+                <path d="m46 60 10 10 20-22" stroke="#80efcf" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M60 6v12m0 84v12M6 60h12m84 0h12M22 22l9 9m58 58 9 9m0-76-9 9m-58 58-9 9" stroke="rgba(255,255,255,.35)" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <strong>Diagnóstico<br>con claridad.</strong>
+              <span>CUIDAMOS TU EQUIPO</span>
+            </div>
+            <div class="repair-card-bottom"><span>REVISIÓN</span><i></i><span>REPARACIÓN</span><i></i><span>LISTO</span></div>
+          </div>
+          <div class="service-sticker"><span>REPARACIÓN<br>DE EQUIPOS</span><b>↗</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="store-section benefits-section" id="nosotros">
+      <div class="store-container">
+        <div class="benefits-heading">
+          <p class="store-eyebrow"><span></span> MÁS QUE UNA TIENDA</p>
+          <h2>La tecnología correcta.<br><em>Sin complicaciones.</em></h2>
+        </div>
+        <div class="benefit-grid">
+          <article><span class="benefit-icon">✳</span><h3>Asesoría cercana</h3><p>Te ayudamos a elegir según lo que realmente necesitas.</p></article>
+          <article><span class="benefit-icon">⌘</span><h3>Todo en un solo lugar</h3><p>Equipos, periféricos, software y conectividad especializada.</p></article>
+          <article><span class="benefit-icon">↻</span><h3>Soporte técnico</h3><p>Venta y reparación para acompañarte antes y después.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+      <div class="store-container contact-inner">
+        <div>
+          <p class="store-eyebrow"><span></span> HABLEMOS DE TECNOLOGÍA</p>
+          <h2>¿Qué necesitas<br><em>resolver hoy?</em></h2>
+          <p>Consulta por productos, disponibilidad o servicio técnico. Estamos para ayudarte a encontrar la opción adecuada.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="store-button store-button-primary" href="/servicio-tecnico">Solicitar servicio técnico <span aria-hidden="true">→</span></a>
+          <a class="contact-admin-link" href="/admin/productos">Administrar inventario <span aria-hidden="true">↗</span></a>
+          <a class="contact-admin-link" href="/login">Acceso de administración <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="store-footer">
+    <div class="store-container footer-inner">
+      <a class="store-brand" href="/">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none"><rect x="4" y="5" width="32" height="23" rx="5" stroke="currentColor" stroke-width="2.5"/><path d="M14 35h12M20 28v7M12 15l5 5 11-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="brand-copy"><strong>TIENDA</strong><small>TECNOLOGÍA & SERVICIO</small></span>
+      </a>
+      <span>Equipos, periféricos y servicio técnico para seguir avanzando.</span>
+      <a href="#inicio" class="back-to-top">Volver arriba ↑</a>
+    </div>
+    <div class="store-container footer-legal">© <span data-year></span> Tienda tecnológica. Todos los derechos reservados.</div>
+  </footer>
+</body>
+</html>

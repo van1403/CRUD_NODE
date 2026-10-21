@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Servicio técnico | Administración</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="admin-page">
+  <%- include('navigation') %>
+  <main class="admin-container">
+    <div class="admin-heading"><div><p class="admin-eyebrow">DIAGNÓSTICO Y REPARACIÓN</p><h1>Servicio técnico</h1></div><a class="admin-public-link" href="/servicio-tecnico">Formulario público ↗</a></div>
+    <% if (successMessage) { %><p class="admin-success" role="status"><%= successMessage %></p><% } %>
+    <% if (solicitudes.length === 0) { %><section class="admin-panel"><p class="admin-empty">No hay solicitudes técnicas pendientes.</p></section><% } %>
+    <div class="admin-order-list">
+      <% solicitudes.forEach((solicitud) => { %>
+        <article class="admin-panel repair-request-card">
+          <div class="admin-order-heading">
+            <div><p class="admin-eyebrow">SOLICITUD #<%= solicitud.id_solicitud %></p><h2><%= solicitud.equipo %></h2><p><%= solicitud.nombre_cliente %> · <%= solicitud.telefono %><%= solicitud.correo ? ` · ${solicitud.correo}` : '' %></p></div>
+            <span class="order-status status-<%= solicitud.estado %>"><%= solicitud.estado.replaceAll('_', ' ') %></span>
+          </div>
+          <p class="repair-description"><%= solicitud.descripcion %></p>
+          <div class="admin-order-footer">
+            <span class="repair-date">Recibida: <%= new Date(solicitud.creado_en).toLocaleString('es-PE') %></span>
+            <% if (solicitud.estado !== 'listo' && solicitud.estado !== 'cancelado') { %>
+              <form class="admin-status-form" action="/admin/servicio-tecnico/<%= solicitud.id_solicitud %>/estado" method="post">
+                <label for="estado-reparacion-<%= solicitud.id_solicitud %>">Actualizar</label>
+                <select id="estado-reparacion-<%= solicitud.id_solicitud %>" name="estado" required>
+                  <option value="pendiente">Pendiente</option><option value="en_revision">En revisión</option>
+                  <option value="en_reparacion">En reparación</option><option value="listo">Listo</option><option value="cancelado">Cancelar</option>
+                </select>
+                <button class="admin-primary-button" type="submit">Guardar</button>
+              </form>
+            <% } %>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </main>
+</body>
+</html>

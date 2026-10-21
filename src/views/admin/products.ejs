@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inventario | Administración</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="admin-page">
+  <%- include('navigation') %>
+  <main class="admin-container">
+    <div class="admin-heading">
+      <div><p class="admin-eyebrow">CATÁLOGO Y EXISTENCIAS</p><h1>Inventario</h1></div>
+      <a class="admin-public-link" href="/">Ver tienda pública ↗</a>
+    </div>
+    <% if (errorMessage) { %><p class="admin-alert" role="alert"><%= errorMessage %></p><% } %>
+    <% if (successMessage) { %><p class="admin-success" role="status"><%= successMessage %></p><% } %>
+
+    <section class="admin-panel">
+      <h2>Agregar producto</h2>
+      <form class="admin-product-form" action="/admin/productos" method="post">
+        <label>Nombre<input name="nombre" maxlength="120" required></label>
+        <label>Categoría
+          <select name="categoria" required>
+            <% Object.entries(categories).forEach(([value, label]) => { %><option value="<%= value %>"><%= label %></option><% }) %>
+          </select>
+        </label>
+        <label>Precio (S/)<input name="precio" type="number" min="0" max="99999999.99" step="0.01" required></label>
+        <label>Stock inicial<input name="stock" type="number" min="0" step="1" required></label>
+        <label class="admin-product-wide">Descripción<textarea name="descripcion" maxlength="2000" rows="2"></textarea></label>
+        <label class="admin-product-wide">URL de imagen (opcional)<input name="imagen_url" type="url" maxlength="2000" placeholder="https://..."></label>
+        <button class="admin-primary-button" type="submit">Guardar producto</button>
+      </form>
+    </section>
+
+    <section class="admin-panel">
+      <div class="admin-section-title"><h2>Productos registrados</h2><span><%= productos.length %> en total</span></div>
+      <% if (productos.length === 0) { %>
+        <p class="admin-empty">Todavía no hay productos. Usa el formulario para agregar el primero.</p>
+      <% } else { %>
+        <div class="admin-product-list">
+          <% productos.forEach((producto) => { %>
+            <article class="admin-product-row">
+              <div class="admin-product-meta">
+                <span>#<%= producto.id_producto %> · <%= categories[producto.categoria] %></span>
+                <span class="<%= producto.activo ? 'status-active' : 'status-inactive' %>"><%= producto.activo ? 'Publicado' : 'Retirado del catálogo' %></span>
+              </div>
+              <form class="admin-product-edit" action="/admin/productos/<%= producto.id_producto %>/actualizar" method="post">
+                <label>Nombre<input name="nombre" maxlength="120" value="<%= producto.nombre %>" required></label>
+                <label>Categoría
+                  <select name="categoria" required>
+                    <% Object.entries(categories).forEach(([value, label]) => { %><option value="<%= value %>" <%= producto.categoria === value ? 'selected' : '' %>><%= label %></option><% }) %>
+                  </select>
+                </label>
+                <label>Precio<input name="precio" type="number" min="0" max="99999999.99" step="0.01" value="<%= producto.precio %>" required></label>
+                <label>Stock<input name="stock" type="number" min="0" step="1" value="<%= producto.stock %>" required></label>
+                <label class="admin-product-wide">Descripción<textarea name="descripcion" maxlength="2000" rows="2"><%= producto.descripcion %></textarea></label>
+                <label class="admin-product-wide">URL imagen<input name="imagen_url" type="url" maxlength="2000" value="<%= producto.imagen_url || '' %>"></label>
+                <button class="admin-primary-button" type="submit">Guardar cambios</button>
+              </form>
+              <div class="admin-row-actions">
+                <% if (producto.activo) { %>
+                  <form action="/admin/productos/<%= producto.id_producto %>/eliminar" method="post"
+                    onsubmit="return confirm('¿Retirar este producto de la tienda? Se conservará para los pedidos existentes.');">
+                    <button class="admin-danger-button" type="submit">Eliminar del catálogo</button>
+                  </form>
+                <% } else { %>
+                  <form action="/admin/productos/<%= producto.id_producto %>/estado" method="post">
+                    <button class="admin-secondary-button" type="submit" name="activo" value="true">Volver a publicar</button>
+                  </form>
+                <% } %>
+              </div>
+            </article>
+          <% }) %>
+        </div>
+      <% } %>
+    </section>
+  </main>
+</body>
+</html>

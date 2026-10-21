@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solicitar servicio | CRUD_NODE</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="container narrow">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">CRUD_NODE · Servicios</p>
+        <h1>Solicitar servicio</h1>
+        <p>Registra un servicio asociado a un cliente.</p>
+      </div>
+      <a class="button secondary" href="/clientes">Volver</a>
+    </header>
+
+    <% if (errorMessage) { %>
+      <p class="alert" role="alert"><%= errorMessage %></p>
+    <% } %>
+
+    <section class="panel">
+      <% if (clientes.length === 0) { %>
+        <p>Primero debes registrar un cliente.</p>
+        <a class="button" href="/clientes">Ir a clientes</a>
+      <% } else { %>
+        <form class="form-stack" action="/clientes/solicita" method="post">
+          <label>Cliente
+            <select name="id_cliente" required>
+              <option value="">Selecciona un cliente</option>
+              <% clientes.forEach((cliente) => { %>
+                <option value="<%= cliente.id_cliente %>"
+                  <%= String(values.id_cliente || '') === String(cliente.id_cliente) ? 'selected' : '' %>>
+                  <%= cliente.nombre %>
+                </option>
+              <% }) %>
+            </select>
+          </label>
+          <label>Monto
+            <input name="monto" type="number" min="0" max="99999999.99" step="0.01"
+              value="<%= values.monto || '' %>">
+          </label>
+          <label>Fecha del servicio
+            <input name="fecha_servicio" type="date" value="<%= values.fecha_servicio || '' %>">
+          </label>
+          <button type="submit">Registrar servicio</button>
+        </form>
+      <% } %>
+    </section>
+  </main>
+</body>
+</html>

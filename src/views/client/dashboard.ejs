@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clientes | CRUD_NODE</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">CRUD_NODE · Gestión</p>
+        <h1>Clientes</h1>
+        <p>Consulta y administra los clientes registrados.</p>
+      </div>
+      <a class="button" href="/clientes/solicita">Solicitar servicio</a>
+      <form action="/logout" method="post">
+        <button class="button secondary" type="submit">Cerrar sesión</button>
+      </form>
+    </header>
+
+    <% if (errorMessage) { %>
+      <p class="alert" role="alert"><%= errorMessage %></p>
+    <% } %>
+    <% if (query.error === 'dni') { %>
+      <p class="alert" role="alert">Ese DNI ya está registrado.</p>
+    <% } %>
+
+    <section class="panel">
+      <h2>Registrar cliente</h2>
+      <form class="form-grid" action="/clientes" method="post">
+        <label>Nombre
+          <input name="nombre" maxlength="100" required>
+        </label>
+        <label>DNI (8 dígitos)
+          <input name="dni" minlength="8" maxlength="8" pattern="[0-9]{8}">
+        </label>
+        <label>Celular (9 dígitos)
+          <input name="celular" minlength="9" maxlength="9" pattern="[0-9]{9}">
+        </label>
+        <button type="submit">Guardar cliente</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Clientes registrados</h2>
+      <% if (clientes.length === 0) { %>
+        <p>Aún no hay clientes registrados.</p>
+      <% } else { %>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>DNI</th>
+                <th>Celular</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% clientes.forEach((cliente) => { %>
+                <tr>
+                  <td><%= cliente.id_cliente %></td>
+                  <td><%= cliente.nombre %></td>
+                  <td><%= cliente.dni || '—' %></td>
+                  <td><%= cliente.celular || '—' %></td>
+                  <td><a href="/clientes/<%= cliente.id_cliente %>">Ver detalles</a></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      <% } %>
+    </section>
+  </main>
+</body>
+</html>

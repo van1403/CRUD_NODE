@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iniciar sesión | CRUD_NODE</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="container narrow">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">CRUD_NODE · Acceso privado</p>
+        <h1>Iniciar sesión</h1>
+        <p>Usa una cuenta creada por el administrador del proyecto.</p>
+      </div>
+    </header>
+
+    <% if (errorMessage) { %>
+      <p class="alert" role="alert"><%= errorMessage %></p>
+    <% } %>
+
+    <section class="panel">
+      <form class="form-stack" action="/login" method="post">
+        <label>Correo electrónico
+          <input name="email" type="email" autocomplete="username" required>
+        </label>
+        <label>Contraseña
+          <input name="password" type="password" autocomplete="current-password" required>
+        </label>
+        <button type="submit">Ingresar</button>
+      </form>
+    </section>
+    <p><a class="button secondary" href="/">Volver a la tienda</a></p>
+  </main>
+</body>
+</html>

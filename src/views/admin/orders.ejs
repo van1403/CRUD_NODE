@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pedidos | Administración</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="admin-page">
+  <%- include('navigation') %>
+  <main class="admin-container">
+    <div class="admin-heading"><div><p class="admin-eyebrow">VENTAS Y RESERVAS</p><h1>Pedidos</h1></div><a class="admin-public-link" href="/carrito">Ver carrito ↗</a></div>
+    <% if (successMessage) { %><p class="admin-success" role="status"><%= successMessage %></p><% } %>
+    <% if (errorMessage) { %><p class="admin-alert" role="alert"><%= errorMessage %></p><% } %>
+    <p class="admin-help">Los pedidos pendientes no reservan stock. Al confirmarlos se vuelve a revisar la disponibilidad y se descuentan las unidades; al cancelar un pedido confirmado, se devuelven al inventario. El pago se coordina manualmente con el cliente.</p>
+    <% if (pedidos.length === 0) { %>
+      <section class="admin-panel"><p class="admin-empty">Aún no hay pedidos.</p></section>
+    <% } %>
+    <div class="admin-order-list">
+      <% pedidos.forEach((pedido) => { %>
+        <article class="admin-panel admin-order-card">
+          <div class="admin-order-heading">
+            <div><p class="admin-eyebrow">PEDIDO #<%= pedido.id_pedido %></p><h2><%= pedido.nombre_cliente %></h2><p><%= pedido.telefono %><%= pedido.correo ? ` · ${pedido.correo}` : '' %></p></div>
+            <div class="admin-order-total"><strong>S/ <%= Number(pedido.total).toFixed(2) %></strong><span><%= new Date(pedido.creado_en).toLocaleString('es-PE') %></span></div>
+          </div>
+          <ul class="admin-order-items">
+            <% pedido.detalle_pedido.forEach((item) => { %>
+              <li><span><%= item.nombre_producto %> × <%= item.cantidad %></span><strong>S/ <%= Number(item.subtotal).toFixed(2) %></strong></li>
+            <% }) %>
+          </ul>
+          <div class="admin-order-footer">
+            <span class="order-status status-<%= pedido.estado %>"><%= pedido.estado %></span>
+            <% if (pedido.estado === 'pendiente' || pedido.estado === 'confirmado') { %>
+              <form class="admin-status-form" action="/admin/pedidos/<%= pedido.id_pedido %>/estado" method="post">
+                <label for="estado-pedido-<%= pedido.id_pedido %>">Cambiar estado</label>
+                <select id="estado-pedido-<%= pedido.id_pedido %>" name="estado" required>
+                  <% if (pedido.estado === 'pendiente') { %><option value="confirmado">Confirmar pedido</option><% } %>
+                  <% if (pedido.estado === 'confirmado') { %><option value="enviado">Marcar enviado</option><% } %>
+                  <option value="cancelado">Cancelar y devolver stock</option>
+                </select>
+                <button class="admin-primary-button" type="submit">Actualizar</button>
+              </form>
+            <% } %>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solicitar servicio técnico | Tienda tecnológica</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/service-request.js" defer></script>
+</head>
+<body class="store-page">
+  <header class="store-header">
+    <div class="store-container store-nav">
+      <a class="store-brand" href="/">
+        <span class="brand-mark" aria-hidden="true">⌘</span>
+        <span class="brand-copy"><strong>TIENDA</strong><small>TECNOLOGÍA & SERVICIO</small></span>
+      </a>
+      <nav class="store-menu" aria-label="Navegación">
+        <a href="/">Inicio</a>
+        <a href="/#catalogo">Productos</a>
+        <a href="/carrito">Carrito</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="store-container store-section request-page">
+    <div class="request-intro">
+      <p class="store-eyebrow"><span></span> SERVICIO TÉCNICO</p>
+      <h1>Cuéntanos qué le pasa<br><em>a tu equipo.</em></h1>
+      <p>Envíanos los datos y coordinaremos el diagnóstico. El envío de esta solicitud no implica una reparación ni un costo aprobado.</p>
+    </div>
+
+    <form class="request-form" data-service-form>
+      <div class="request-form-grid">
+        <label>Nombre completo
+          <input name="nombre" maxlength="120" autocomplete="name" required>
+        </label>
+        <label>Teléfono
+          <input name="telefono" maxlength="20" autocomplete="tel" required>
+        </label>
+        <label>Correo electrónico (opcional)
+          <input name="correo" type="email" maxlength="254" autocomplete="email">
+        </label>
+        <label>Tipo de equipo
+          <input name="equipo" maxlength="120" placeholder="Ej.: laptop, PC, impresora" required>
+        </label>
+        <label class="request-description">Describe el problema
+          <textarea name="descripcion" minlength="10" maxlength="2000" rows="5" required></textarea>
+        </label>
+      </div>
+      <div class="request-submit">
+        <p>Usaremos tus datos solo para contactarte sobre esta solicitud técnica.</p>
+        <button class="store-button store-button-primary" type="submit" data-service-button>Enviar solicitud <span aria-hidden="true">→</span></button>
+      </div>
+      <p class="form-message" data-service-message role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <footer class="store-footer">
+    <div class="store-container footer-legal">© <span data-year></span> Tienda tecnológica.</div>
+  </footer>
+</body>
+</html>

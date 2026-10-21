@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalle de cliente | CRUD_NODE</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Cliente #<%= cliente.id_cliente %></p>
+        <h1>Detalle de cliente</h1>
+      </div>
+      <a class="button secondary" href="/clientes">Volver a clientes</a>
+    </header>
+
+    <% if (query.solicitud === 'creada') { %>
+      <p class="success" role="status">La solicitud de servicio se registró correctamente.</p>
+    <% } %>
+
+    <section class="panel">
+      <h2>Datos del cliente</h2>
+      <form class="form-grid" action="/clientes/<%= cliente.id_cliente %>/actualizar" method="post">
+        <label>Nombre
+          <input name="nombre" value="<%= cliente.nombre %>" maxlength="100" required>
+        </label>
+        <label>DNI
+          <input name="dni" value="<%= cliente.dni || '' %>" minlength="8" maxlength="8" pattern="[0-9]{8}">
+        </label>
+        <label>Celular
+          <input name="celular" value="<%= cliente.celular || '' %>" minlength="9" maxlength="9" pattern="[0-9]{9}">
+        </label>
+        <button type="submit">Guardar cambios</button>
+      </form>
+      <form class="delete-form" action="/clientes/<%= cliente.id_cliente %>/eliminar" method="post"
+        onsubmit="return confirm('¿Eliminar este cliente?');">
+        <button class="danger" type="submit">Eliminar cliente</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <h2>Servicios</h2>
+        <a href="/clientes/solicita">Registrar solicitud</a>
+      </div>
+      <% if (servicios.length === 0) { %>
+        <p>Este cliente todavía no tiene servicios registrados.</p>
+      <% } else { %>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>ID</th><th>Monto</th><th>Fecha</th></tr>
+            </thead>
+            <tbody>
+              <% servicios.forEach((servicio) => { %>
+                <tr>
+                  <td><%= servicio.id_servicio %></td>
+                  <td><%= servicio.monto === null ? '—' : Number(servicio.monto).toFixed(2) %></td>
+                  <td><%= servicio.fecha_servicio || '—' %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      <% } %>
+    </section>
+  </main>
+</body>
+</html>
